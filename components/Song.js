@@ -1,12 +1,12 @@
 import { useRecoilState } from 'recoil';
 import useSpotify from '../hooks/useSpotify';
 import {timeConverter} from '../lib/timeConverter';
-import {currentTrackId, isSongPlaying} from '../atoms/songAtom';
+import {currentTrackIdState, isSongPlayingState} from '../atoms/songAtom';
 
 function Song({track, songNum}) {
     const spotifyApi = useSpotify();
-    const [currentTrackIds, setCurrentTrackId] = useRecoilState(currentTrackId);
-    const [isSongPlayings, setIsSongPlaying] = useRecoilState(isSongPlaying);
+    const [currentTrackId, setCurrentTrackId] = useRecoilState(currentTrackIdState);
+    const [isSongPlaying, setIsSongPlaying] = useRecoilState(isSongPlayingState);
 
     const playSong = () =>{
         setCurrentTrackId(track.track.id);
