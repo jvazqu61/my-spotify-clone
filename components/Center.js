@@ -27,6 +27,12 @@ function Center() {
     useEffect(() => {
         setColor(shuffle(colors).pop());
     }, [selectedPlaylistId])
+
+    function msToTime (ms){
+        const min = Math.floor(ms/60000);
+        const sec = ((ms%60000)/1000).toFixed(0);
+        return (min+":"+sec);
+    }
     
     useEffect(() => {
         spotifyApi.getPlaylist(selectedPlaylistId).then((data) => {
@@ -36,7 +42,7 @@ function Center() {
 
     console.log(playlist)
     return (
-        <div className="flex-grow  ">
+        <div className="flex-grow w-10 overflow-y-scroll h-screen scrollbar-hide ">
             <header className="absolute top-5 right-8">
                 <div className="flex items-center  bg-red-300 space-x-3 opacity-90 hover:opacity-80 cursor-pointer rounded-full p-1 pr-2">
                     <img 
@@ -47,21 +53,55 @@ function Center() {
                     <ChevronDownIcon className="h-5 w-5"/>                
                 </div>
             </header>
-            <section className={`flex items-end space-x-7 bg-gradient-to-b to-black ${color} h-80 text-white paddin-8  w-full`}>
+            <section className={`flex items-end space-x-7 bg-gradient-to-b to-black ${color} h-80 text-white paddin-8  w-full `}>
                 
                 
-                <div className="flex items-start">
-                    <img className="h-45 w-40 ml-5 pb-10" src={playlist?.images[0].url} alt="" />
-                    <p>PLAYLIST</p>
+                <div className="flex items-center">
+                    <img className="w-55 h-60 ml-5 pb-10" src={playlist?.images[1].url} alt="" />
                     
-                    <br/>
-                    <h3>{playlist?.name}</h3>
+                    
+                    <div className="col-span-1 ml-5">
+                        <h1 className="text-sm">PLAYLIST</h1>
+                        <p className="text-6xl font-bold">{playlist?.name}</p>
+                        <p className="text-gray-500 mt-5">
+                        {playlist?.tracks.total + " songs"  }
+                    </p>
+                    </div>
+                    
                    
                     
 
                 </div>
+                
+                
 
             </section>
+            <div className="flex items-start ml-10 ">
+              <div className="grid grid-cols-4 md:grid-cols-6  ">
+                    <div className="text-white w-5">#</div>
+                    <div className="text-white">TITLE</div>
+                    <div className="text-white">ALBUM</div>
+                    <div className="text-white">TIME</div>
+                    {playlist?.tracks.items.map((t, i) => {
+                        return (
+                            <>
+                            <div className="text-white w-5">{i+1}</div>
+                            <div className="flex items-start text-white ">
+                                <img className="w-10" src={t.track.album.images[2].url} alt="" />
+                                <div className="flex">
+                                  <p>{t.track.name} </p>  
+                                </div>
+                                
+                                
+                            </div>
+                            <div className="text-white w-15 h-10 overscroll-auto">{t.track.album.name}</div>
+                            <div className="text-white">{msToTime(t.track.duration_ms)}</div>
+                            </>
+                        )
+                    })}
+
+                </div>  
+            </div>
             
         </div>
     )
