@@ -5,6 +5,7 @@ import { shuffle } from 'lodash';
 import { playlistIdState, playlistState } from '../atoms/playlistsAtom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import useSpotify from "../hooks/useSpotify";
+import Songs from "./Songs";
 
 const colors = [
     "from-indigo-500",
@@ -28,21 +29,20 @@ function Center() {
         setColor(shuffle(colors).pop());
     }, [selectedPlaylistId])
 
-    function msToTime (ms){
-        const min = Math.floor(ms/60000);
-        const sec = ((ms%60000)/1000).toFixed(0);
-        return (min+":"+sec);
-    }
+    
     
     useEffect(() => {
-        spotifyApi.getPlaylist(selectedPlaylistId).then((data) => {
-            setPlaylist(data.body);
-        }).catch((e) => {console.log("Error: something went wrong", e)});
+        console.log("inn")
+        spotifyApi.getPlaylist(selectedPlaylistId)
+            .then((data) => {
+                console.log("inn22")
+                setPlaylist(data.body);
+            }).catch((e) => {console.log("Error: something went wrong", e)});
     }, [spotifyApi, selectedPlaylistId])
 
     console.log(playlist)
     return (
-        <div className="flex-grow w-10 overflow-y-scroll h-screen scrollbar-hide ">
+        <div className="flex-grow w-3 overflow-y-scroll h-screen scrollbar-hide ">
             <header className="absolute top-5 right-8">
                 <div className="flex items-center  bg-red-300 space-x-3 opacity-90 hover:opacity-80 cursor-pointer rounded-full p-1 pr-2">
                     <img 
@@ -57,12 +57,12 @@ function Center() {
                 
                 
                 <div className="flex items-center">
-                    <img className="w-55 h-60 ml-5 pb-10" src={playlist?.images[1].url} alt="" />
+                    <img className="w-60 h-65 shadow-2xl ml-5 pb-10" src={playlist?.images[0].url} alt="" />
                     
                     
                     <div className="col-span-1 ml-5">
-                        <h1 className="text-sm">PLAYLIST</h1>
-                        <p className="text-6xl font-bold">{playlist?.name}</p>
+                        <p className="text-sm">PLAYLIST</p>
+                        <h1 className="xl:text-8xl md:text-6xl text-4xl font-bold">{playlist?.name}</h1>
                         <p className="text-gray-500 mt-5">
                         {playlist?.tracks.total + " songs"  }
                     </p>
@@ -76,31 +76,10 @@ function Center() {
                 
 
             </section>
-            <div className="flex items-start ml-10 ">
-              <div className="grid grid-cols-4 grid-flow-row auto-cols-max ">
-                    <div className="text-white w-5">#</div>
-                    <div className="text-white">TITLE</div>
-                    <div className="text-white">ALBUM</div>
-                    <div className="text-white">TIME</div>
-                    {playlist?.tracks.items.map((t, i) => {
-                        return (
-                            <>
-                            <div className="text-white w-5">{i+1}</div>
-                            <div className="flex items-start text-white ">
-                                <img className="w-10" src={t.track.album.images[2].url} alt="" />
-                                <div className="flex">
-                                  <p>{t.track.name} </p>  
-                                </div>
-                                
-                                
-                            </div>
-                            <div className="text-white w-15 h-10 overscroll-auto">{t.track.album.name}</div>
-                            <div className="text-white">{msToTime(t.track.duration_ms)}</div>
-                            </>
-                        )
-                    })}
 
-                </div>  
+            <div className="flex items-start ml-10 ">
+                <Songs />
+              
             </div>
             
         </div>
@@ -108,3 +87,5 @@ function Center() {
 }
 
 export default Center
+
+

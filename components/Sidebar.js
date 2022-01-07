@@ -21,7 +21,7 @@ function Sidebar() {
 
     console.log( playlists)
     return (
-        <div className="text-gray-500 p-5 text-xs border-r border-gray-900 overflow-y-scroll h-screen scrollbar-hide">
+        <div className="hidden md:inline-flex lg:max-w-[15rem] sm:max-w-[12rem] text-gray-500 p-5 text-s lg:text-m border-r border-gray-900 overflow-y-scroll h-screen scrollbar-hide transition-all">
             <div className="space-y-4">
             <button onClick={() => signOut()} className='flex items-center space-x-2  hover:text-white'>
                     <p>Logout</p>
