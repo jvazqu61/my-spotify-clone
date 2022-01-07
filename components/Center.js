@@ -77,7 +77,7 @@ function Center() {
 
             </section>
             <div className="flex items-start ml-10 ">
-              <div className="grid grid-cols-4 md:grid-cols-6  ">
+              <div className="grid grid-cols-4 grid-flow-row auto-cols-max ">
                     <div className="text-white w-5">#</div>
                     <div className="text-white">TITLE</div>
                     <div className="text-white">ALBUM</div>
