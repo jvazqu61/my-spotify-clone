@@ -10,3 +10,8 @@ export const playlistIdState = atom({
     default: "4VGniA7kzli6pZ4sHQZUz6"
 
 });
+
+export const playlistShuffleState = atom({
+    key: 'playlistShuffleState',
+    default: false,
+})

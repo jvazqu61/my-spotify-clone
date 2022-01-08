@@ -15,8 +15,8 @@ function Songs() {
             <div className="text-white">TITLE</div>
             <div className="text-white">ALBUM</div>
             <div className="text-white">TIME</div> */}
-            {playlist?.tracks.items.map((t, i) => {
-            return (<Song key={t.track.id} track={t} songNum={i+1}/>)
+            {playlist?.tracks?.items.map((t, i) => {
+            return (<Song key={t?.track.id} track={t} songNum={i+1}/>)
                 
             })}
 

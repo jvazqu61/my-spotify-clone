@@ -19,16 +19,16 @@ function Song({track, songNum}) {
     
     return (
         <div 
-            className="grid grid-cols-2 text-gray-400 py-4 px-5 hover:bg-gray-400 rounded-lg cursor-pointer"
+            className="grid grid-cols-2 text-gray-400 py-4 px-5 hover:bg-gray-600  rounded-lg cursor-pointer"
             onClick={playSong}
         >
             <div className="flex items-center space-x-4">
                 <p className=" w-5">{songNum}</p>
                 
-                <img className="w-10 h-10" src={track.track.album.images[0].url} alt="" />
+                <img className="w-10 h-10" src={track?.track.album.images[0].url} alt="" />
                 <div className="">
-                    <p className="text-white w-36 lg:w-64 truncate">{track.track.name} </p>  
-                    <p className="w-40">{track.track.artists[0].name} </p>  
+                    <p className="text-white w-36 lg:w-64 truncate">{track?.track?.name} </p>  
+                    <p className="w-40">{track?.track.artists[0].name} </p>  
                 </div>
                 
             </div>
