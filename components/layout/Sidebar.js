@@ -2,9 +2,9 @@ import {HomeIcon,SearchIcon, LibraryIcon, PlusCircleIcon, HeartIcon, RssIcon} fr
 import { signOut, useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { playlistIdState } from '../atoms/playlistsAtom';
-import useSpotify from '../hooks/useSpotify';
-import { currentViewType } from '../atoms/viewAtom';
+import { playlistIdState } from '../../atoms/playlistsAtom';
+import useSpotify from '../../hooks/useSpotify';
+import { currentViewType } from '../../atoms/viewAtom';
 
 function Sidebar() {
     const spotifyApi = useSpotify();
@@ -25,7 +25,7 @@ function Sidebar() {
         spotifyApi.getMyTopArtists()
             .then((data) => {
                 console.log(data);
-                setViewType('home');
+                setViewType('library');
             })
     }
 

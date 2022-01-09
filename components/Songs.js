@@ -1,11 +1,15 @@
 import { useRecoilValue } from "recoil";
 import { playlistState } from '../atoms/playlistsAtom';
 import Song from "./song";
+import { currentViewType } from '../atoms/viewAtom';
+import useSpotify from "../hooks/useSpotify";
 
 
 
 function Songs() {
     const playlist = useRecoilValue(playlistState);
+    const viewType = useRecoilValue(currentViewType);
+    const spotifyApi = useSpotify();
 
     
 
@@ -16,7 +20,21 @@ function Songs() {
             <div className="text-white">ALBUM</div>
             <div className="text-white">TIME</div> */}
             {playlist?.tracks?.items.map((t, i) => {
-            return (<Song key={t?.track.id} track={t} songNum={i+1}/>)
+                // spotifyApi.addToQueue(viewType === 'album' ? t?.uri : t?.track?.uri)
+                    // .then((data) => console.log("got: "))
+                console.log("track: ", t.uri)
+                
+            return (<Song 
+                key={viewType === 'album' ? t.id : t?.track.id}  
+                trackUri={viewType === 'album' ? t.uri : t?.track.uri}
+                trackId={viewType === 'album' ? t.id : t?.track.id}
+                image={ (viewType === 'album') ? (playlist.images?.[0].url ) : (t.track.album.images?.[0].url) }
+                artist={(viewType === 'album') ? (t.artists?.[0].name ) : (t.track?.artists?.[0].name) }
+                trackName={(viewType === 'album') ? (t.name ) : (t.track?.name)}
+                albumName={(viewType === 'album') ? (playlist.name ) : (t.track.album.name)}
+                duration={(viewType === 'album') ? (t.duration_ms ) : (t.track.duration_ms)}
+                songNum={i+1}
+                />)
                 
             })}
 

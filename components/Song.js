@@ -3,19 +3,21 @@ import useSpotify from '../hooks/useSpotify';
 import {timeConverter} from '../lib/timeConverter';
 import {currentTrackIdState, isSongPlayingState} from '../atoms/songAtom';
 
-function Song({track, songNum}) {
+
+function Song({trackUri, trackId, songNum, image, artist, trackName, albumName, duration}) {
     const spotifyApi = useSpotify();
     const [currentTrackId, setCurrentTrackId] = useRecoilState(currentTrackIdState);
     const [isSongPlaying, setIsSongPlaying] = useRecoilState(isSongPlayingState);
 
     const playSong = () =>{
-        setCurrentTrackId(track.track.id);
+        setCurrentTrackId(trackId);
         setIsSongPlaying(true);
         spotifyApi.play({
-            uris:[track.track.uri]
+            uris:[trackUri]
         })
     }
 
+    
     
     return (
         <div 
@@ -25,16 +27,16 @@ function Song({track, songNum}) {
             <div className="flex items-center space-x-4">
                 <p className=" w-5">{songNum}</p>
                 
-                <img className="w-10 h-10" src={track?.track.album.images[0].url} alt="" />
+                <img className="w-10 h-10" src={image} alt="" />
                 <div className="">
-                    <p className="text-white w-36 lg:w-64 truncate">{track?.track?.name} </p>  
-                    <p className="w-40">{track?.track.artists[0].name} </p>  
+                    <p className="text-white w-36 lg:w-64 truncate">{trackName} </p>  
+                    <p className="w-40">{artist} </p>  
                 </div>
                 
             </div>
             <div className=" flex items-center justify-between ml-auto md:ml-0">
-                <p className="w-40 hidden md:inline ">{track.track.album.name}</p>
-                <p className="">{timeConverter(track.track.duration_ms)}</p>
+                <p className="w-40 hidden md:inline ">{albumName}</p>
+                <p className="">{timeConverter(duration)}</p>
             </div>
         </div>
     )

@@ -1,10 +1,10 @@
 import { useSession } from "next-auth/react";
-import useSpotify from "../hooks/useSpotify"
-import { currentTrackIdState, isSongPlayingState } from '../atoms/songAtom';
-import { playlistShuffleState } from '../atoms/playlistsAtom';
+import useSpotify from "../../hooks/useSpotify"
+import { currentTrackIdState, isSongPlayingState } from '../../atoms/songAtom';
+import { playlistShuffleState } from '../../atoms/playlistsAtom';
 import { useRecoilState } from 'recoil';
 import { useState,useEffect,useCallback } from 'react';
-import useSongInfo from "../hooks/useSongInfo";
+import useSongInfo from "../../hooks/useSongInfo";
 // import { ReplyIcon, FastForwardIcon, PlayIcon, RewindIcon, SwitchHorizontalIcon } from "@heroicons/react/outline";
 import { ReplyIcon, FastForwardIcon, PauseIcon, PlayIcon, RewindIcon, SwitchHorizontalIcon } from "@heroicons/react/solid";
 import { VolumeOffIcon, VolumeUpIcon } from "@heroicons/react/outline";
@@ -55,6 +55,7 @@ function Player() {
     )
 
     const handlePlay = () =>{
+        
         spotifyApi.getMyCurrentPlaybackState().then((data) => {
             if (data?.body?.is_playing){
                 spotifyApi.pause();

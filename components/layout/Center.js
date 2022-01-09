@@ -2,13 +2,14 @@
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from 'react';
 import { shuffle } from 'lodash';
-import { playlistIdState, playlistState } from '../atoms/playlistsAtom';
+import { playlistIdState, playlistState } from '../../atoms/playlistsAtom';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import useSpotify from "../hooks/useSpotify";
-import Songs from "./Songs";
+import useSpotify from "../../hooks/useSpotify";
+import Songs from "../Songs";
 import CenterPlaylist from './CenterPlaylist';
 import CenterLibrary from "./CenterLibrary";
-import { currentViewType } from "../atoms/viewAtom";
+import CenterAlbums from "./CenterAlbums";
+import { currentViewType } from "../../atoms/viewAtom";
 
 const colors = [
     "from-indigo-500",
@@ -51,7 +52,8 @@ function Center() {
     return (
         <div className="flex-grow w-3 overflow-y-scroll h-screen scrollbar-hide ">
             {/* <CenterPlaylist color={color} /> */}
-            {viewType === 'home' ? <CenterLibrary /> : <CenterPlaylist color={color} />}
+            {viewType === 'library' ? <CenterLibrary /> : 
+                <CenterPlaylist color={color} />}
             
             
         </div>
