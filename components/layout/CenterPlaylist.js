@@ -5,6 +5,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import useSpotify from "../../hooks/useSpotify";
 import Songs from "../Songs";
 import UserBanner from "./UserBanner";
+import {currentViewType} from '../../atoms/viewAtom';
 
 
 
@@ -15,6 +16,7 @@ function CenterPlaylist({color}) {
     
     // const selectedPlaylistId= useRecoilValue(playlistIdState);
     const [playlist, setPlaylist] = useRecoilState(playlistState);
+    const viewType = useRecoilValue(currentViewType)
     console.log("aall")
     console.log(playlist)
     return (
@@ -29,7 +31,7 @@ function CenterPlaylist({color}) {
                     
                     
                     <div className="col-span-1 ml-5">
-                        <p className="text-sm">PLAYLIST</p>
+                        <p className="text-sm">{viewType.toLocaleUpperCase()}</p>
                         <h1 className="xl:text-8xl md:text-6xl text-4xl font-bold">{playlist?.name}</h1>
                         <p className="text-gray-500 mt-5">
                         {playlist?.tracks?.total + " songs"  }

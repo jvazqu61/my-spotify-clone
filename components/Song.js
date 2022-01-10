@@ -10,11 +10,11 @@ function Song({trackUri, trackId, songNum, image, artist, trackName, albumName, 
     const [isSongPlaying, setIsSongPlaying] = useRecoilState(isSongPlayingState);
 
     const playSong = () =>{
-        setCurrentTrackId(trackId);
+        setCurrentTrackId("spotify:track:"+trackId);
         setIsSongPlaying(true);
-        spotifyApi.play({
-            uris:[trackUri]
-        })
+        // spotifyApi.play({
+        //     uris:[trackUri]
+        // })
     }
 
     

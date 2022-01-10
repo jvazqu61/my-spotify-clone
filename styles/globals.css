@@ -6,4 +6,11 @@
     .button{
         @apply h-5 w-5 cursor-pointer hover:scale-125 transition transform duration-100 ease-out;
     }
+
+    .card{
+        @apply hover:bg-gray-400 hover:text-white/100   rounded-md m-5 p-4 bg-gray-600 w-[200px] min-h-[250px] max-h-[300px] rounded-[20px] overflow-hidden  cursor-pointer hover:scale-105 transition duration-200 ease-out;
+    }
+    .card-image {
+        @apply  h-40 w-[200px] border-red-200 border-2  border-[3px] rounded-md;
+    }
 }

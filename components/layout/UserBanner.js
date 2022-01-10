@@ -6,7 +6,7 @@ function UserBanner() {
     
     return (
         <header className="absolute top-5 right-8 max-w-50 min-w-22">
-                <div className="flex items-center text-white bg-[#191919] space-x-3 opacity-90 hover:opacity-80 cursor-pointer rounded-full p-2 pr-2  w-10 md:w-44">
+                <div className="sticky flex items-center text-white bg-[#191919] space-x-3 opacity-90 hover:opacity-80 cursor-pointer rounded-full p-2 pr-2  w-10 md:w-44">
                    
                     {session?.user?.image ?<img 
                         className="rounded-full w-10 h-10"

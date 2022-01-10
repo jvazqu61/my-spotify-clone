@@ -67,6 +67,7 @@ function Sidebar() {
                     return <p key={playlist.id} onClick={() => {
                         setViewType('playlist');
                         setSelectedPlaylistId(playlist.id);
+                        
                     }
                     } className="cursor-pointer hover:text-white">{playlist.name}</p>
                 })}

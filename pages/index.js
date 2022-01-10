@@ -3,8 +3,27 @@ import Sidebar from '../components/layout/Sidebar';
 import Center from '../components/layout/Center';
 import { getSession } from 'next-auth/react';
 import Player from '../components/layout/Player';
+import { useSession } from 'next-auth/react';
+import SpotifyPlayer from 'react-spotify-web-playback';
+import { useEffect, useState } from 'react';
+import useSpotify from '../hooks/useSpotify';
 
-export default function Home() {
+export default function Home(props) {
+  const [showPlayer, setShowPlayer] = useState(false);
+  const spotifyApi = useSpotify();
+  const { data: session, status } = useSession();
+  const {accessToken } = session;
+  console.log("acc: ", props.session.user.accessToken)
+  console.log("acc2: ", session.user.accessToken)
+  // console.log("acc2: ", session.user.accessToken)
+
+  useEffect(() => {
+    if (!session.user.accessToken) return ;
+    
+    setShowPlayer(true)
+    
+      
+  }, [accessToken])
   return (
     <div className="bg-black h-screen overflow-hidden">
       <Head>
@@ -22,7 +41,8 @@ export default function Home() {
       </main>
       {/* music player */}
       <div className="sticky bottom-0">
-        <Player />
+        {showPlayer && <Player />}
+        
       </div>
       
     </div>

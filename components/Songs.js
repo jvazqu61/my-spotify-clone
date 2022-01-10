@@ -19,15 +19,16 @@ function Songs() {
             <div className="text-white">TITLE</div>
             <div className="text-white">ALBUM</div>
             <div className="text-white">TIME</div> */}
+            {console.log("ply: ", playlist)}
             {playlist?.tracks?.items.map((t, i) => {
                 // spotifyApi.addToQueue(viewType === 'album' ? t?.uri : t?.track?.uri)
                     // .then((data) => console.log("got: "))
-                console.log("track: ", t.uri)
+                console.log("track: ", t)
                 
             return (<Song 
                 key={viewType === 'album' ? t.id : t?.track.id}  
-                trackUri={viewType === 'album' ? t.uri : t?.track.uri}
-                trackId={viewType === 'album' ? t.id : t?.track.id}
+                trackUri={viewType === 'album' ? t.uri : t?.track?.uri}
+                trackId={viewType === 'album' ? t.id : t?.track?.id}
                 image={ (viewType === 'album') ? (playlist.images?.[0].url ) : (t.track.album.images?.[0].url) }
                 artist={(viewType === 'album') ? (t.artists?.[0].name ) : (t.track?.artists?.[0].name) }
                 trackName={(viewType === 'album') ? (t.name ) : (t.track?.name)}

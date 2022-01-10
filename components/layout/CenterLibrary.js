@@ -16,19 +16,21 @@ function CenterLibrary() {
 
     const spotifyApi = useSpotify();
     return (
-        <div className="overflow-scroll">
-            <UserBanner />
-            <div className="text-gray-50 flex items-center space-x-10 p-3 pl-20">
-                <button onClick={() => setTabSelected('Playlists')} className={`${tabSelected === 'Playlists'?"bg-gray-500":"bg-black"} p-2 rounded-md`}>Playlists</button> 
-                <button onClick={() => setTabSelected('Albums')} className={`${tabSelected === 'Albums'?"bg-gray-500":"bg-black"} p-2 rounded-md`}>Albums</button> 
-            </div>
-            <div>
-                <h1 className="text-white p-5 text-2xl font-bold">{tabSelected}</h1>
-                {tabSelected === 'Playlists'?<PlaylistViewer />:<AlbumsViewer />}
+        <>
+        <UserBanner />
+            <div className="overflow-y-scroll scrollbar-hide">
+                <div className="text-gray-50 flex items-center space-x-10 p-3 pl-20">
+                    <button onClick={() => setTabSelected('Playlists')} className={`${tabSelected === 'Playlists'?"bg-gray-500":"bg-black"} p-2 rounded-md`}>Playlists</button> 
+                    <button onClick={() => setTabSelected('Albums')} className={`${tabSelected === 'Albums'?"bg-gray-500":"bg-black"} p-2 rounded-md`}>Albums</button> 
+                </div>
+                <div>
+                    <h1 className="text-white p-5 text-2xl font-bold">{tabSelected}</h1>
+                    {tabSelected === 'Playlists'?<PlaylistViewer />:<AlbumsViewer />}
+                    
+                </div>
                 
             </div>
-            
-        </div>
+        </>
     )
 }
 
