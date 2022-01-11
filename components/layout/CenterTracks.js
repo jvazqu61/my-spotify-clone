@@ -27,7 +27,7 @@ function CenterPlaylist({color}) {
                 
                 
                 <div className="flex items-center">
-                    <img className="w-60 h-65 shadow-2xl ml-5 pb-10" src={list?.images?.[0]?.url} alt="" />
+                    <img className="w-60 h-65 shadow-2xl ml-5 mb-7 rounded-md" src={list?.images?.[0]?.url} alt="" />
                     
                     
                     <div className="col-span-1 ml-5">
@@ -38,6 +38,7 @@ function CenterPlaylist({color}) {
                     </p>
                     </div>
                     
+                    
                    
                     
 
@@ -45,6 +46,7 @@ function CenterPlaylist({color}) {
             </section>
 
             <div className="flex items-end ml-10 w-[95%]">
+                
                 <Songs />
               
             </div>

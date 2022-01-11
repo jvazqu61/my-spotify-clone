@@ -23,21 +23,21 @@ function Songs() {
                 className="grid grid-cols-2 text-gray-400 py-2 px-5 cursor-pointer border-b-2 border-[#3c3d3d] "
    
             >
-            <div className="flex items-center space-x-4 w-[200px]">
-                <p className=" w-5 font-bold">#</p>
-                
-                <p className="font-bold"> TITLE</p>  
-            </div>
-            <div className=" flex items-center justify-between ml-auto md:ml-0">
-                <p className="w-[12rem] hidden md:inline font-bold ml-[8rem">ALBUM</p>
-                <p className="font-bold"><ClockIcon className="w-7"/></p>
-                
-            </div>
-            <div>
+                <div className="flex items-center space-x-4 w-[200px]">
+                    <p className=" w-5 font-bold">#</p>
+                    
+                    <p className="font-bold"> TITLE</p>  
+                </div>
+                <div className=" flex items-center justify-between ml-auto md:ml-0">
+                    <p className="w-[12rem] hidden md:inline font-bold ml-[8rem">ALBUM</p>
+                    <p className="font-bold"><ClockIcon className="w-7"/></p>
+                    
+                </div>
+                <div>
 
-            </div>
+                </div>
             
-        </div>
+            </div>
             {console.log("ply: ", list)}
             {list?.tracks?.items.map((t, i) => {
                 

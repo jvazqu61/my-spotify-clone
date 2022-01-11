@@ -5,6 +5,7 @@ import { playlistState,playlistIdState} from '../../atoms/listsAtom';
 import {useRecoilState, useRecoilValue} from 'recoil';
 import {currentTrackIdState} from '../../atoms/songAtom';
 
+
 function AlbumsViewer() {
     const [albums, setAlbums] = useState([]);
     const [viewType, setViewType ] = useRecoilState(currentViewType);
@@ -17,8 +18,6 @@ function AlbumsViewer() {
     useEffect(() => {
         if (spotifyApi.getAccessToken()){
             spotifyApi.getMySavedAlbums().then( (data) => {
-                console.log("setting album")
-                console.log(data.body.items)
                 setAlbums(data.body.items);
             })
         }
@@ -36,7 +35,6 @@ function AlbumsViewer() {
                 setViewType('album');
             })
         
-        // setViewType('album');
     }
 
     return (
