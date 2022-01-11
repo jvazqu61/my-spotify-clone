@@ -1,7 +1,7 @@
 import useSpotify from "../../hooks/useSpotify";
 import { useEffect, useState } from 'react';
 import { currentViewType } from '../../atoms/viewAtom';
-import { playlistState,playlistIdState} from '../../atoms/playlistsAtom';
+import { playlistState,playlistIdState} from '../../atoms/listsAtom';
 import {useRecoilState, useRecoilValue} from 'recoil';
 import {currentTrackIdState} from '../../atoms/songAtom';
 

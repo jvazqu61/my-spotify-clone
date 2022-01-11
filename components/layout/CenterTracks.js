@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react';
-import { playlistIdState, playlistState } from '../../atoms/playlistsAtom';
+import { playlistIdState, playlistState } from '../../atoms/listsAtom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import useSpotify from "../../hooks/useSpotify";
 import Songs from "../Songs";
@@ -15,26 +15,10 @@ function CenterPlaylist({color}) {
     const spotifyApi = useSpotify();
     
     // const selectedPlaylistId= useRecoilValue(playlistIdState);
-    const [playlist, setPlaylist] = useRecoilState(playlistState);
+    const list = useRecoilValue(playlistState);
     const viewType = useRecoilValue(currentViewType)
-    const selectedPlaylistId= useRecoilValue(playlistIdState);
+ 
 
-    // useEffect(() => {
-    //     console.log("innnn")
-    //     if (selectedPlaylistId){
-    //        spotifyApi
-    //         .getPlaylist(selectedPlaylistId)
-    //         .then((data) => {
-    //             console.log("setting playlist")
-    //             setPlaylist(data.body);
-    //         }).catch((e) => {console.log("Error: something went wrong", e)}); 
-    //     }
-    //     return () => setPlaylist('');
-    // }, [spotifyApi, selectedPlaylistId])
-
-    // console.log("aall: ", selectedPlaylistId)
-
-    console.log(playlist)
     return (
         <>
         <UserBanner />
@@ -43,14 +27,14 @@ function CenterPlaylist({color}) {
                 
                 
                 <div className="flex items-center">
-                    <img className="w-60 h-65 shadow-2xl ml-5 pb-10" src={playlist?.images?.[0]?.url} alt="" />
+                    <img className="w-60 h-65 shadow-2xl ml-5 pb-10" src={list?.images?.[0]?.url} alt="" />
                     
                     
                     <div className="col-span-1 ml-5">
                         <p className="text-sm">{viewType.toLocaleUpperCase()}</p>
-                        <h1 className="xl:text-8xl md:text-6xl text-4xl font-bold">{playlist?.name}</h1>
+                        <h1 className="xl:text-6xl md:text-6xl text-4xl font-bold">{list?.name}</h1>
                         <p className="text-gray-500 mt-5">
-                        {playlist?.tracks?.total + " songs"  }
+                        {list?.tracks?.total + " songs"  }
                     </p>
                     </div>
                     
@@ -60,7 +44,7 @@ function CenterPlaylist({color}) {
                 </div>
             </section>
 
-            <div className="flex items-end ml-10 w-[1000px]">
+            <div className="flex items-end ml-10 w-[95%]">
                 <Songs />
               
             </div>

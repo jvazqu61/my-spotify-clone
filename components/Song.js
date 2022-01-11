@@ -12,9 +12,6 @@ function Song({trackUri, trackId, songNum, image, artist, trackName, albumName, 
     const playSong = () =>{
         setCurrentTrackId("spotify:track:"+trackId);
         setIsSongPlaying(true);
-        // spotifyApi.play({
-        //     uris:[trackUri]
-        // })
     }
 
     

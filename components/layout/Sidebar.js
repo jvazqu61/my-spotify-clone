@@ -2,7 +2,7 @@ import {HomeIcon,SearchIcon, LibraryIcon, PlusCircleIcon, HeartIcon, RssIcon} fr
 import { signOut, useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { playlistIdState,playlistState } from '../../atoms/playlistsAtom';
+import { playlistIdState,playlistState } from '../../atoms/listsAtom';
 import useSpotify from '../../hooks/useSpotify';
 import { currentViewType } from '../../atoms/viewAtom';
 
