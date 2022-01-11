@@ -17,7 +17,23 @@ function CenterPlaylist({color}) {
     // const selectedPlaylistId= useRecoilValue(playlistIdState);
     const [playlist, setPlaylist] = useRecoilState(playlistState);
     const viewType = useRecoilValue(currentViewType)
-    console.log("aall")
+    const selectedPlaylistId= useRecoilValue(playlistIdState);
+
+    // useEffect(() => {
+    //     console.log("innnn")
+    //     if (selectedPlaylistId){
+    //        spotifyApi
+    //         .getPlaylist(selectedPlaylistId)
+    //         .then((data) => {
+    //             console.log("setting playlist")
+    //             setPlaylist(data.body);
+    //         }).catch((e) => {console.log("Error: something went wrong", e)}); 
+    //     }
+    //     return () => setPlaylist('');
+    // }, [spotifyApi, selectedPlaylistId])
+
+    // console.log("aall: ", selectedPlaylistId)
+
     console.log(playlist)
     return (
         <>

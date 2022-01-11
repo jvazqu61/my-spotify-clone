@@ -33,8 +33,10 @@ function AlbumsViewer() {
                 setCurrentTrackId(uri)
                 setPlaylist(data.body)
                 setSelectedPlaylistId("");
+                setViewType('album');
             })
-        setViewType('album');
+        
+        // setViewType('album');
     }
 
     return (

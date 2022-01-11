@@ -37,18 +37,21 @@ function Center() {
     
     
     useEffect(() => {
-        
+        console.log("innnn")
         if (selectedPlaylistId){
            spotifyApi
             .getPlaylist(selectedPlaylistId)
             .then((data) => {
-                
+                // console.log("setting playlist")
                 setPlaylist(data.body);
             }).catch((e) => {console.log("Error: something went wrong", e)}); 
         }
         
-    }, [spotifyApi, selectedPlaylistId])
+        
+    }, [spotifyApi, selectedPlaylistId, viewType])
 
+    console.log("aall: ", selectedPlaylistId)
+    
     console.log(playlist)
 
     
