@@ -5,7 +5,6 @@ import { shuffle } from 'lodash';
 import { playlistIdState, playlistState } from '../../atoms/listsAtom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import useSpotify from "../../hooks/useSpotify";
-import Songs from "../Songs";
 import CenterPlaylist from './CenterTracks';
 import CenterLibrary from "./CenterLibrary";
 import { currentViewType } from "../../atoms/viewAtom";

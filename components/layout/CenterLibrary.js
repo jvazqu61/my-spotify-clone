@@ -1,8 +1,4 @@
-import { useSession } from "next-auth/react";
-import { playlistIdState, playlistState } from '../../atoms/listsAtom';
-import { useRecoilState, useRecoilValue } from 'recoil';
 import useSpotify from "../../hooks/useSpotify";
-import Songs from "../Songs";
 import { useState } from 'react';
 import PlaylistViewer from './PlaylistViewer';
 import AlbumsViewer from './AlbumsViewer';

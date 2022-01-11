@@ -1,9 +1,7 @@
 import { useRecoilValue } from "recoil";
 import { playlistState,playlistIdState } from '../atoms/listsAtom';
-import Song from "./song";
+import Song from "./Song";
 import { currentViewType } from '../atoms/viewAtom';
-import useSpotify from "../hooks/useSpotify";
-import { useEffect } from 'react';
 import { ClockIcon } from "@heroicons/react/outline";
 
 
