@@ -1,7 +1,6 @@
 
 import { signIn, useSession} from 'next-auth/react';
 import { useEffect } from 'react';
-import SpotifyWebApi from 'spotify-web-api-node';
 import spotifyApi from '../lib/spoitfy';
 
 
@@ -13,15 +12,13 @@ function useSpotify() {
     useEffect(() => {
         if (session){
           if (session.error === 'RefreshTokenAccessError'){
-              console.log("signing in")
             signIn();
         }
         spotifyApi.setAccessToken(session.user.accessToken);
   
         }
 
-        // if refresh token access fails then redirect user to login 
-        
+
     }, [session])
 
     return spotifyApi;

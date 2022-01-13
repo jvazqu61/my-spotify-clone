@@ -21,7 +21,6 @@ const colors = [
 
 
 function Center() {
-    const { data: session } = useSession();
     const spotifyApi = useSpotify();
     const [color, setColor] = useState(null)
     const selectedPlaylistId= useRecoilValue(playlistIdState);
@@ -35,22 +34,17 @@ function Center() {
     
     
     useEffect(() => {
-        console.log("innnn")
+      
         if (selectedPlaylistId){
            spotifyApi
             .getPlaylist(selectedPlaylistId)
             .then((data) => {
-                // console.log("setting playlist")
                 setPlaylist(data.body);
             }).catch((e) => {console.log("Error: something went wrong", e)}); 
         }
         
         
     }, [spotifyApi, selectedPlaylistId, viewType])
-
-    console.log("aall: ", selectedPlaylistId)
-    
-    console.log(playlist)
 
     
     return (

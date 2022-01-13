@@ -14,3 +14,14 @@
         @apply  h-40 w-[200px] border-red-200 border-2  border-[3px] rounded-md;
     }
 }
+
+.firstCircleLoading{
+    animation-delay: 0.1s;
+}
+.secondCircleLoading{
+    background-color: antiquewhite;
+    animation-delay: 0.3s;
+}
+.thirdCircleLoading{
+    animation-delay: 0.5s;
+}

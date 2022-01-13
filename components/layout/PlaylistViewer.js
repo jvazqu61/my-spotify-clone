@@ -1,19 +1,16 @@
 import useSpotify from "../../hooks/useSpotify";
 import { useEffect, useState } from 'react';
-import { currentViewType } from '../../atoms/viewAtom';
 import { playlistIdState } from '../../atoms/listsAtom';
 import {useRecoilState } from 'recoil';
 
 function PlaylistViewer() {
     const [playlists, setPlaylists] = useState([]);
-    const [viewType, setViewType ] = useRecoilState(currentViewType);
     const [selectedPlaylistId, setSelectedPlaylistId ] = useRecoilState(playlistIdState);
 
     const spotifyApi = useSpotify();
     useEffect(() => {
         if (spotifyApi.getAccessToken()){
             spotifyApi.getUserPlaylists().then( (data) => {
-                console.log("setting")
                 setPlaylists(data.body.items);
             })
         }
@@ -21,12 +18,8 @@ function PlaylistViewer() {
 
     const handleViewAlbum = (id) => {
         setSelectedPlaylistId(id);
-        setViewType('playlist');
     }
-    
-    console.log(playlists)
     return (
-        // <div>
             <div  className=" text-white/80 flex flex-wrap items-start overflow-auto p-2 justify-items-center h-[75vh] scrollbar-hide">
                 {playlists?.map(playlist => {
                     return (
@@ -41,8 +34,6 @@ function PlaylistViewer() {
                 })}
 
             </div>
-            
-        // </div>
     )
 }
 

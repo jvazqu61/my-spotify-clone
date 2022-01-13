@@ -1,18 +1,16 @@
-import useSpotify from "../../hooks/useSpotify";
 import { useState } from 'react';
 import PlaylistViewer from './PlaylistViewer';
 import AlbumsViewer from './AlbumsViewer';
 import UserBanner from "./UserBanner";
+import MyHead from "./MyHead";
 
 
 function CenterLibrary() {
     const [tabSelected, setTabSelected] = useState('Playlists');
 
-    
-
-    const spotifyApi = useSpotify();
     return (
         <>
+        <MyHead title={"My Library - " + tabSelected }/>
         <UserBanner />
             <div className="overflow-y-scroll scrollbar-hide">
                 <div className="text-gray-50 flex items-center space-x-10 p-3 pl-20">

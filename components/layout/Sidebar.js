@@ -1,5 +1,5 @@
-import {HomeIcon,SearchIcon, LibraryIcon, PlusCircleIcon, HeartIcon, RssIcon} from '@heroicons/react/outline';
-import { signOut, useSession } from 'next-auth/react';
+import {LibraryIcon} from '@heroicons/react/outline';
+import { useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { playlistIdState,playlistState } from '../../atoms/listsAtom';
@@ -25,12 +25,10 @@ function Sidebar() {
     const handleViewUserLibrary = () =>{
         spotifyApi.getMyTopArtists()
             .then((data) => {
-                console.log(data);
                 setViewType('library');
             })
     }
-
-    console.log( playlists)
+    
     return (
         <div className="hidden md:inline-flex lg:max-w-[17rem] sm:max-w-[13rem] text-gray-400 p-5 text-s lg:text-m border-r border-[#3c3d3d] overflow-y-scroll h-screen scrollbar-hide transition-all mt-3">
             <div className="space-y-4 w-[10rem]">
@@ -43,10 +41,10 @@ function Sidebar() {
                 <br />
 
               
-                <button className=' flex items-center space-x-2 hover:text-white'>
+                {/* <button className=' flex items-center space-x-2 hover:text-white'>
                     <HeartIcon className="h-5 w-5" />
                     <p>Liked Songs</p>
-                </button>
+                </button> */}
                 <hr className="border-t-[0.1] border-[#3c3d3d]" />
 
                 {/* Render playlist */}

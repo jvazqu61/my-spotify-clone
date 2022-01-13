@@ -24,11 +24,8 @@ function AlbumsViewer() {
     }, [spotifyApi])
     
     const handleViewAlbum = (id,uri) => {
-        // setSelectedPlaylistId(id);;
         spotifyApi.getAlbum(id)
             .then((data) => {
-                console.log("got album:")
-                console.log(data)
                 setCurrentTrackId(uri)
                 setPlaylist(data.body)
                 setSelectedPlaylistId("");

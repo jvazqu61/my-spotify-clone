@@ -30,14 +30,14 @@ function UserBanner() {
                     <ChevronDownIcon onClick={handleShowSignOut} className="w-10"/>
                     
                 </div>
-                <div className={` ${showSignoutOptions} origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-[#b3afa6] ring-1 ring-gray-400 ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1 `}>
-                    <div className="py-1" role="none">
-                        <button onClick={() => signOut()} type="submit" className=" ml-[4rem] hover:text-white/100  rounded-md  hover:bg-gray-600 text-gray-700/80 block w-25 text-center px-4 py-2 text-sm hover:scale-105 transition duration-200 ease-out"  role="menuitem" >
-                            Sign out
-                        </button>
+              
+                   
+                    <button onClick={() => signOut()}  className={` ${showSignoutOptions} p-1.5 origin-top-right absolute  right-0 mt-4 drop-shadow-lg bg-[antiquewhite]  focus:outline-none  hover:text-white/100  rounded-md font-bold hover:bg-[#252525] text-gray-700/80  w-56 text-center text-sm hover:scale-105 transition duration-200 ease-out block"   `}  >
+                        Sign out
+                    </button>
 
-                    </div>
-                </div>
+                   
+                
 
             </header>
     )

@@ -13,7 +13,6 @@ import SpotifyWebPlayer from 'react-spotify-web-playback';
         const { data: session, status } = useSession();
         const [currentTrackId, setCurrentTrackId] = useRecoilState(currentTrackIdState);
         const [isSongPlaying, setIsSongPlaying] = useRecoilState(isSongPlayingState);
-        const [isShuffle, setShuffle] = useRecoilState(playlistShuffleState);
         const [volume, setVolume] = useState(50);
         const {accessToken} = session.user;
         const songInfo = useSongInfo();
@@ -21,10 +20,7 @@ import SpotifyWebPlayer from 'react-spotify-web-playback';
         const fetchCurrentSong = () => {
             if (!songInfo) {
                 spotifyApi.getMyCurrentPlayingTrack().then((data) => {
-                    console.log("curr: ", data)
-                    // setCurrentTrackId(data.body?.item?.uri);
                     spotifyApi.getMyCurrentPlaybackState().then((data) => {
-                        console.log("state: ", data)
                         setCurrentTrackId(data.body?.item?.uri);
                         setIsSongPlaying(data.body?.is_playing);
                     })
@@ -33,9 +29,7 @@ import SpotifyWebPlayer from 'react-spotify-web-playback';
         }
 
         useEffect(() => {
-            console.log("tokk: ", currentTrackId)
             if (spotifyApi.getAccessToken() && !currentTrackId) {
-                console.log("fetching new: ");
                 fetchCurrentSong();
                 setVolume(50);
             }

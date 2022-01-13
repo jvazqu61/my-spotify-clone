@@ -1,5 +1,5 @@
 import { useRecoilValue } from "recoil";
-import { playlistState,playlistIdState } from '../atoms/listsAtom';
+import { playlistState} from '../atoms/listsAtom';
 import Song from "./Song";
 import { currentViewType } from '../atoms/viewAtom';
 import { ClockIcon } from "@heroicons/react/outline";
@@ -36,7 +36,6 @@ function Songs() {
                 </div>
             
             </div>
-            {console.log("ply: ", list)}
             {list?.tracks?.items.map((t, i) => {
                 
                 

@@ -1,26 +1,22 @@
 
-import { useEffect, useState } from 'react';
-import { playlistIdState, playlistState } from '../../atoms/listsAtom';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import useSpotify from "../../hooks/useSpotify";
+import { playlistState } from '../../atoms/listsAtom';
+import {  useRecoilValue } from 'recoil';
 import Songs from "../Songs";
 import UserBanner from "./UserBanner";
 import {currentViewType} from '../../atoms/viewAtom';
+import MyHead from './MyHead';
 
 
 
 function CenterPlaylist({color}) {
 
-    // const { data: session } = useSession();
-    const spotifyApi = useSpotify();
-    
-    // const selectedPlaylistId= useRecoilValue(playlistIdState);
     const list = useRecoilValue(playlistState);
     const viewType = useRecoilValue(currentViewType)
  
 
     return (
         <>
+        <MyHead title={(viewType?.charAt(0).toUpperCase() + viewType.slice(1)) + " - " + list?.name} />
         <UserBanner />
            
             <section className={`flex items-end space-x-7 bg-gradient-to-b to-black ${color} h-80 text-white paddin-8  w-full `}>
